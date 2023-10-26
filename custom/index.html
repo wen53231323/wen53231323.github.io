@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>上网导航</title>
+    <!--移动设备适配-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=0.4, maximum-scale=2.0, minimum-scale=0.4">
+    <!--网页图标-->
+    <link href="images/纸飞机.png" type="image/x-icon" rel="icon">
+    <!--引入js、css-->
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/wen.css">
+    <script src="js/sidebar.js"></script>
+    <!-- 背景图 -->
+    <style>
+        #bg-over {
+            background: rgba(20, 29, 36, 0.1) url(images/背景.png) repeat;
+            z-index: -10086;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;/*溢出隐藏*/
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <!-- 随机看板娘 -->
+    <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>
+        var jsonModel = [
+            "https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json",// 萌娘
+            "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json",// 小可爱（女）
+            "https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json"// 小可爱（男）
+        ];
+        L2Dwidget.init({
+            "model": {
+                "jsonPath": jsonModel[Math.floor(Math.random() * (jsonModel.length - 1))],
+                "scale": 1
+            },
+            "display": {
+                "position": "left", // 位置left、right
+                "width": 100, // 宽度
+                "height": 200, // 高度
+                "hOffset": 10, // 横向边距
+                "vOffset": 0 // 纵向边距
+            },
+            "mobile": {
+                "show": false // 手机是否显示
+            },
+        });
+    </script>
+</head>
+<body>
+
+<!--加载页面特效-->
+<script src="js/小烟花.js"></script>
+<script src="js/飘落樱花.js"></script>
+
+<div id="bg-over"></div>
+<!-- top -->
+
+<div id="top">
+    <div class="kuandu">
+        <div class="logo">
+            <a href title="导航"></a>
+        </div>
+        <div class="search fr">
+            <form target="_blank" name="submitform2">
+                <!--搜索框-->
+                <input type="text" id="opentext" onfocus="checkHttps" name="word" autocomplete="off" placeholder="  开始搜索吧 ~">
+                <!--百度搜索-->
+                <input type="submit" class="baidu" value="百度搜索" onclick="webopen('http://www.baidu.com/baidu','word')">
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function webopen(url, get) {
+        window.open(url + '?' + get + '=' + $("#opentext").val());
+    }
+</script>
+
+<!-- 分隔符 主要栏目 -->
+<div id="icon_list">
+    <ul>
+        <li class="project">
+            <a href="http://www.bilibili.com/" title="哔哩哔哩" target="_blank">
+                <img alt="哔哩哔哩" src="/blog/blog/custom/index/bilibili.png">
+                <div class="title">
+                    <span>哔哩哔哩</span>
+                </div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://www.dmxq.fun/" title="动漫星球" target="_blank">
+                <img alt="动漫星球" src="/blog/blog/custom/index/动漫星球.png">
+                <div class="title"><span>动漫星球</span></div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://github.com/" title="GitHub" target="_blank">
+                <img alt="GitHub" src="/blog/blog/custom/index/GitHub.png">
+                <div class="title"><span>GitHub</span></div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://gitee.com/" title="Gitee" target="_blank">
+                <img alt="Gitee" src="/blog/blog/custom/index/Gitee.png">
+                <div class="title"><span>Gitee</span></div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://www.csdn.net/" title="CSDN" csdn target="_blank">
+                <img alt="CSDN" src="/blog/blog/custom/index/CSDN.png">
+                <div class="title"><span>CSDN</span></div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://www.jianshu.com/" title="简书" target="_blank">
+                <img alt="简书" src="/blog/blog/custom/index/简书.png">
+                <div class="title"><span>简书</span></div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://www.zhihu.com/" title="知乎" target="_blank">
+                <img alt="知乎" src="/blog/blog/custom/index/知乎.png">
+                <div class="title"><span>知乎</span></div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://www.cnblogs.com/" title="博客园" target="_blank">
+                <img alt="博客园" src="/blog/blog/custom/index/博客园.png">
+                <div class="title"><span>博客园</span></div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://search.chongbuluo.com/" title="快搜" target="_blank">
+                <img alt="快搜" src="/blog/blog/custom/index/快搜.png">
+                <div class="title"><span>快搜</span></div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://cn.bing.com/" title="必应搜索" target="_blank">
+                <img alt="必应搜索" src="/blog/blog/custom/index/必应搜索.png">
+                <div class="title"><span>必应搜索</span></div>
+            </a>
+        </li>
+        <li class="project">
+            <a href="https://www.google.com.hk/" title="谷歌搜索" target="_blank">
+                <img alt="谷歌搜索" src="/blog/blog/custom/index/谷歌搜索.png">
+                <div class="title"><span>谷歌搜索</span></div>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="clear"></div>
+
+<!-- 分隔符 右侧浮动导航 -->
+
+<div id="rfloat">
+    <ul>
+        <li><a href="https://wen53231323.github.io/" title="返回博客" target="_blank">返回博客</a></li>
+        <li><a href="#">返回顶部</a></li>
+    </ul>
+</div>
+
+<!-- 动漫 -->
+<div class="big_grid">
+    <div class="category">
+        <div class="type video"><font class="pink text">动漫</font></div>
+        <ul>
+            <li><a href="http://www.aomxm.com/" target="_blank">4k动漫</a></li>
+            <li><a href="http://www.zzzfun.com/" target="_blank">zzzfun</a></li>
+            <li><a href="https://www.dmxq.fun/" target="_blank">动漫星球</a></li>
+             <li><a href="https://www.agemys.com/" target="_blank">AGE动漫</a></li>
+            <li><a href="http://www.imomoe.live/" target="_blank">樱花动漫</a></li>
+        </ul>
+        <!--<a href="#" class="more">更多 »</a>-->
+    </div>
+</div>
+
+<!--源码-->
+<div class="big_grid">
+    <div class="category">
+        <div class="type game"><font class="green text">源码</font></div>
+        <ul>
+            <li><a href="https://www.51qianduan.com/" target="_blank">51前端</a></li>
+            <li><a href="https://www.dkewl.com/" target="_blank">刀客</a></li>
+            <li><a href="https://www.gw54.com/sort/yuanmaxz/" target="_blank">小高源码</a></li>
+            <li><a href="https://www.11px.cn/" target="_blank">精准像素</a></li>
+            <li><a href="https://www.shouce.ren/" target="_blank">手册网</a></li>
+        </ul>
+        <!--<a href="" class="more">更多 »</a>-->
+    </div>
+</div>
+
+<!--源码-->
+<div class="big_grid">
+    <div class="category">
+        <div class="type news"><font class="cyan text">源码</font></div>
+        <ul>
+            <li><a href="https://blog.5iux.cn/" target="_blank">5iux</a></li>
+            <li><a href="http://www.htmleaf.com/" target="_blank">jQuery</a></li>
+            <li><a href="https://www.11moban.com/" target="_blank">HTML模板</a></li>
+            <li><a href="https://www.pptsupermarket.com/" target="_blank">PPT超级市场</a></li>
+        </ul>
+         <!--<a href="" class="more">更多 »</a>-->
+    </div>
+</div>
+
+<!--下载-->
+<div class="big_grid">
+    <!-- 预留广告位 960*100 -->
+    <!--<div class="ad"></div>-->
+    <div class="category">
+        <div class="type coolSite"><font class="blue text">下载</font></div>
+        <ul>
+            <li><a href="https://igg-games.com/" target="_blank">IGG</a></li>
+            <li><a href="https://www.3dmgame.com/" target="_blank">3DM</a></li>
+            <li><a href="https://igg-games.com/" target="_blank">IGG</a></li>
+            <li><a href="https://www.gamersky.com/" target="_blank">游民星空</a></li>
+            <li><a href="http://tools.now.cn/" target="_blank">站长工具</a></li>
+            <li><a href="http://www.52pojie.cn/" target="_blank">吾爱破解</a></li>
+            <li><a href="http://tool.chinaz.com/" target="_blank">站长之家</a></li>
+            <li><a href="http://www.xitongzhijia.net/" target="_blank">系统之家</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--图标-->
+<div class="big_grid">
+    <!-- 预留广告位 960*100 -->
+    <!--<div class="ad"></div>-->
+    <div class="category">
+        <div class="type digital"><font class="purple text">图标</font></div>
+        <ul>
+            <li><a href="https://iconmonstr.com/" target="_blank">无色图标</a></li>
+            <li><a href="https://fontawesome.com/" target="_blank">无色图标</a></li>
+            <li><a href="https://findicons.com/" target="_blank">有色图标</a></li>
+            <li><a href="http://flat-icon-design.com/" target="_blank">有色图标</a></li>
+            <li><a href="https://www.toicon.com/" target="_blank">有色图标</a></li>
+            <li><a href="https://ico.z01.com/" target="_blank">zico图标</a></li>
+            <li><a href="https://www.iconfont.cn/" target="_blank">阿里图标</a></li>
+        </ul>
+        <!--<a href="sheying.html" class="more">更多 »</a>-->
+    </div>
+</div>
+
+<!--课程、技术-->
+<div class="big_grid">
+    <!-- 预留广告位 960*100 -->
+    <!--<div class="ad"></div>-->
+    <div class="category">
+        <div class="type bank"><font class="yellow text">技术</font></div>
+        <ul>
+            <li><a href="https://www.chongbuluo.com/" target="_blank">虫部落</a></li>
+            <li><a href="https://so66.cn/" target="_blank">阿楠教学网</a></li>
+            <li><a href="https://www.gw54.com/" target="_blank">小高教学网</a></li>
+            <li><a href="https://www.swiper.com.cn/" target="_blank">swiper前端</a></li>
+            <li><a href="https://codepen.io/" target="_blank">在线前端编辑</a></li>
+            <li><a href="https://www.w3school.com.cn/" target="_blank">w3school</a></li>
+            <li><a href="https://www.w3cschool.cn/" target="_blank">w3cschool极客</a></li>
+        </ul>
+        <!--<a href="jishu.html" class="more">更多 »</a>-->
+    </div>
+</div>
+
+<!--求职-->
+<div class="big_grid">
+    <div class="category">
+        <div class="type house"><font class="red text">求职</font></div>
+        <ul>
+            <li><a href="https://www.liepin.com/" target="_blank">猎聘网</a></li>
+            <li><a href="http://bj.ganji.com/" target="_blank">赶集网</a></li>
+            <li><a href="https://www.zhipin.com/" target="_blank">boss直聘</a></li>
+            <li><a href="http://www.chinahr.com/" target="_blank">中华英才</a></li>
+            <li><a href="http://www.zhaopin.com/" target="_blank">智联招聘</a></li>
+            <li><a href="http://www.51job.com/" target="_blank">前程无忧网</a></li>
+            <li><a href="http://www.yingjiesheng.com/" target="_blank">应届生求职</a></li>
+        </ul>
+        <!--<a href="shenghuo.html" class="more">更多 »</a>-->
+    </div>
+</div>
+
+<!--购物-->
+<div class="big_grid">
+    <div class="category">
+        <div class="type shopping"><font class="gray text">购物</font></div>
+        <ul>
+            <li><a href="http://www.jd.com/" target="_blank">京东</a></li>
+            <li><a href="http://www.taobao.com/" target="_blank">淘宝</a></li>
+            <li><a href="https://www.tmall.com/" target="_blank">天猫</a></li>
+            <li><a href="https://www.amazon.cn/" target="_blank">亚马逊</a></li>
+            <li><a href="http://www.vip.com/" target="_blank">唯品会</a></li>
+            <li><a href="http://bj.jumei.com/" target="_blank">聚美优品</a></li>
+            <li><a href="http://www.suning.com/" target="_blank">苏宁易购</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="clear"></div>
+
+<!--从这里开始，下面都是侧边栏-->
+<!--加载侧边栏-->
+<div id="menu"><i></i></div>
+
+<div class="list closed sidebar">
+    <ul>
+        <li class="title">磁力资源</li>
+        <li><a href="https://mikanani.me/" target="_blank">蜜柑计划</a></li>
+        <li><a href="https://acg.rip/" target="_blank">动漫下载ACG</a></li>
+        <li><a href="https://xiongmaogi.xyz/" target="_blank">熊猫磁力</a></li>
+        <li><a href="https://www.kisssub.org/" target="_blank">爱恋动漫</a></li>
+        <li><a href="https://www.36dm.club/" target="_blank">简单动漫</a></li>
+        <li><a href="https://mikanani.me/" target="_blank">蜜城计划</a></li>
+        <li><a href="https://btfox9.org/" target="_blank">btfox</a></li>
+        <li><a href="https://bt1207hi.xyz/" target="_blank">bt1207</a></li>
+        <li><a href="https://www.upyunso.com/" target="_blank">UP搜索</a></li>
+        <li><a href="https://www.videograbber.net/zh/" target="_blank">片源网</a></li>
+        <li><a href="https://www.dytt8.net/index2.htm/" target="_blank">电影天堂</a></li>
+        <li><a href="https://www.4k1080.com/" target="_blank">蓝光电影网</a></li>
+    </ul>
+    <ul>
+        <li class="title">实用工具</li>
+        <li><a href="https://sm.ms/" target="_blank">sm.ms图床</a></li>
+        <li><a href="https://tool.liumingye.cn/" target="_blank">工具箱</a></li>
+        <li><a href="https://www.dute.org/" target="_blank">独特工具箱</a></li>
+        <li><a href="http://www.588230.com/" target="_blank">南瓜工具箱</a></li>
+        <li><a href="https://www.toolnb.com/" target="_blank">爱资料工具箱</a></li>
+        <li><a href="https://www.gaitubao.com/" target="_blank">图片缩放</a></li>
+        <li><a href="https://convertio.co/zh/" target="_blank">文件转换器</a></li>
+        <li><a href="https://chrome.zzzmh.cn/#/index/" target="_blank">极简插件</a></li>
+        <li><a href="https://www.crx4.com/" target="_blank">Crx4Chrome插件</a></li>
+        <li><a href="https://3g.gljlw.com/music/wy/" target="_blank">音乐提取</a></li>
+        <li><a href="https://music.2hakeji.com/" target="_blank">音乐提取</a></li>
+        <li><a href="http:http://tool.liumingye.cn/music/?page=searchPage" target="_blank">音乐提取</a></li>
+        <li><a href="https://xbeibeix.com/api/bilibili/">视频提取</a></li>
+        <li><a href="https://bilibili.iiilab.com/" target="_blank">视频提取</a></li>
+        <li><a href="https://www.videograbber.net/zh/" target="_blank">视频提取</a></li>
+        <li><a href="https://www.iconfont.cn/" target="_blank">阿里图标</a></li>
+        <li><a href="https://www.5tu.cn/colors/yansezhongwenming.html" target="_blank">颜色对照表</a></li>
+        <li><a href="https://www.zfuhao.com/" target="_blank">表情符号获取</a></li>
+        <li><a href="http://open.yesapi.cn/list.html">数据库模板</a></li>
+        <li><a href="https://www.lingdaima.com/" target="_blank">前端工具箱</a></li>
+        <li><a href="https://uiverse.io/buttons" target="_blank">css特效代码</a></li>
+        <li><a href="https://shadows.brumm.af/" target="_blank">css在线调阴影</a></li>
+        <li><a href="https://lingdaima.com/cssbutton/" target="_blank">在线设计按钮</a></li>
+        <li><a href="https://datum.codedefault.com/" target="_blank">模拟数据生成器</a></li>
+        <li><a href="https://xbeibeix.com/api/bilibili/">Excel转HTML</a></li>
+    </ul>
+    <ul>
+        <li class="title">壁纸获取</li>
+        <li><a href="https://zhutix.com/" target="_blank">致美化</a></li>
+        <li><a href="https://bz.zzzmh.cn/index/" target="_blank">极简壁纸</a></li>
+        <li><a href="https://wallhere.com/" target="_blank">wallhere</a></li>
+        <li><a href="https://wallhaven.cc/" target="_blank">wallhaven</a></li>
+        <li><a href="https://livewallp.com/" target="_blank">livewallp</a></li>
+        <li><a href="https://www.livewallpaperpc.com/" target="_blank">livewallpaperpc</a></li>
+        <li><a href="https://wallpaperwaifu.com/" target="_blank">wallpaperwaifu</a></li>
+    </ul>
+</div>
+</body>
+</html>
